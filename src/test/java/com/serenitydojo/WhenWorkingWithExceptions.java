@@ -32,13 +32,13 @@ public class WhenWorkingWithExceptions {
      *
      */
     @Test
-    public void catchingExceptions() {
+    public void catchingExceptions() throws  IOException{
         FileLoader fileLoader = new FileLoader();
         assertThat(fileLoader.fileContainsText("hello.txt","Hello World")).isTrue();
     }
 
     @Test
-    public void catchingExceptionsWhenTheFileDoesNotExist() {
+    public void catchingExceptionsWhenTheFileDoesNotExist() throws IOException{
         FileLoader fileLoader = new FileLoader();
         assertThat(fileLoader.fileContainsText("does-not-exist.txt","Hello World")).isFalse();
     }
@@ -47,7 +47,7 @@ public class WhenWorkingWithExceptions {
      * Exercise 3 - Throwing custom exceptions
      */
     @Test(expected = MissingWelcomeFileException.class)
-    public void catchingCustomExceptionsWhenTheFileDoesNotExist() {
+    public void catchingCustomExceptionsWhenTheFileDoesNotExist() throws IOException {
         FileLoader fileLoader = new FileLoader();
         assertThat(fileLoader.fileHasText("does-not-exist.txt","Hello World")).isFalse();
     }
